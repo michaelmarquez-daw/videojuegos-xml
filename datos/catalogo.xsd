@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Elemento raíz. La clave y el unique evitan ids o títulos repetidos. -->
+  <xs:element name="catalogo" type="tipoCatalogo">
+    <xs:key name="claveJuego">
+      <xs:selector xpath="juego"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <xs:unique name="tituloUnico">
+      <xs:selector xpath="juego"/>
+      <xs:field xpath="titulo"/>
+    </xs:unique>
+  </xs:element>
+
+  <!-- Tipos complejos -->
+
+  <xs:complexType name="tipoCatalogo">
+    <xs:sequence>
+      <xs:element name="juego" type="tipoJuego" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="actualizado" type="xs:date" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tipoJuego">
+    <xs:sequence>
+      <xs:element name="titulo" type="tipoTexto"/>
+      <xs:element name="estudio" type="tipoEstudio"/>
+      <xs:element name="anio" type="tipoAnio"/>
+      <!-- Una misma plataforma o género no se puede repetir dentro del juego -->
+      <xs:element name="plataformas" type="tipoPlataformas">
+        <xs:unique name="plataformaSinRepetir">
+          <xs:selector xpath="plataforma"/>
+          <xs:field xpath="."/>
+        </xs:unique>
+      </xs:element>
+      <xs:element name="generos" type="tipoGeneros">
+        <xs:unique name="generoSinRepetir">
+          <xs:selector xpath="genero"/>
+          <xs:field xpath="."/>
+        </xs:unique>
+      </xs:element>
+      <xs:element name="precio" type="tipoPrecioEnEuros"/>
+      <xs:element name="nota" type="tipoNota"/>
+      <xs:element name="descripcion" type="tipoDescripcion" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="tipoId" use="required"/>
+    <xs:attribute name="pegi" type="tipoPegi" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tipoEstudio">
+    <xs:simpleContent>
+      <xs:extension base="tipoTexto">
+        <xs:attribute name="pais" type="tipoPais" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="tipoPrecioEnEuros">
+    <xs:simpleContent>
+      <xs:extension base="tipoPrecio">
+        <xs:attribute name="moneda" type="xs:string" fixed="EUR"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="tipoPlataformas">
+    <xs:sequence>
+      <xs:element name="plataforma" type="tipoPlataforma" maxOccurs="6"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoGeneros">
+    <xs:sequence>
+      <xs:element name="genero" type="tipoGenero" maxOccurs="3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Tipos simples -->
+
+  <xs:simpleType name="tipoId">
+    <xs:restriction base="xs:ID">
+      <xs:pattern value="J[0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoTexto">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="60"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoDescripcion">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="160"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Código de país ISO de dos letras en mayúsculas: ES, JP, US... -->
+  <xs:simpleType name="tipoPais">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoAnio">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1980"/>
+      <xs:maxInclusive value="2030"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoPegi">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="7"/>
+      <xs:enumeration value="12"/>
+      <xs:enumeration value="16"/>
+      <xs:enumeration value="18"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoPlataforma">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PC"/>
+      <xs:enumeration value="PS4"/>
+      <xs:enumeration value="PS5"/>
+      <xs:enumeration value="Xbox One"/>
+      <xs:enumeration value="Xbox Series"/>
+      <xs:enumeration value="Switch"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoGenero">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Acción"/>
+      <xs:enumeration value="Aventura"/>
+      <xs:enumeration value="Carreras"/>
+      <xs:enumeration value="Metroidvania"/>
+      <xs:enumeration value="Mundo abierto"/>
+      <xs:enumeration value="Plataformas"/>
+      <xs:enumeration value="Puzles"/>
+      <xs:enumeration value="Rol"/>
+      <xs:enumeration value="Roguelike"/>
+      <xs:enumeration value="Sandbox"/>
+      <xs:enumeration value="Shooter"/>
+      <xs:enumeration value="Simulación"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Hasta 2 decimales y 0 permitido para los juegos gratuitos -->
+  <xs:simpleType name="tipoPrecio">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="99.99"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoNota">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="10"/>
+      <xs:fractionDigits value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

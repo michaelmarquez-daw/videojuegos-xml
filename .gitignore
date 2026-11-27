@@ -1,0 +1,14 @@
+# Notas personales, no van al repositorio
+EXPLICACION.md
+
+# Java
+*.class
+out/
+target/
+
+# Editores y sistema
+.idea/
+*.iml
+.vscode/
+Thumbs.db
+.DS_Store

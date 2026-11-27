@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogo SYSTEM "catalogo.dtd">
+<!-- Precios orientativos en euros y notas inventadas sobre 10 para la práctica -->
+<catalogo actualizado="2026-11-20"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="catalogo.xsd">
+
+  <juego id="J01" pegi="12">
+    <titulo>The Legend of Zelda: Breath of the Wild</titulo>
+    <estudio pais="JP">Nintendo EPD</estudio>
+    <anio>2017</anio>
+    <plataformas>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Aventura</genero>
+      <genero>Mundo abierto</genero>
+    </generos>
+    <precio moneda="EUR">59.99</precio>
+    <nota>9.7</nota>
+    <descripcion>Link despierta sin recuerdos y explora Hyrule con total libertad desde el primer minuto.</descripcion>
+  </juego>
+
+  <juego id="J02" pegi="18">
+    <titulo>The Witcher 3: Wild Hunt</titulo>
+    <estudio pais="PL">CD Projekt Red</estudio>
+    <anio>2015</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>PS5</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Xbox Series</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Rol</genero>
+      <genero>Mundo abierto</genero>
+    </generos>
+    <precio moneda="EUR">29.99</precio>
+    <nota>9.3</nota>
+    <descripcion>Geralt de Rivia busca a Ciri en un continente en guerra lleno de contratos y monstruos.</descripcion>
+  </juego>
+
+  <juego id="J03" pegi="7">
+    <titulo>Hollow Knight</titulo>
+    <estudio pais="AU">Team Cherry</estudio>
+    <anio>2017</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Metroidvania</genero>
+      <genero>Plataformas</genero>
+    </generos>
+    <precio moneda="EUR">14.99</precio>
+    <nota>8.9</nota>
+    <descripcion>Un pequeño caballero recorre las ruinas del reino subterráneo de Hallownest.</descripcion>
+  </juego>
+
+  <juego id="J04" pegi="7">
+    <titulo>Stardew Valley</titulo>
+    <estudio pais="US">ConcernedApe</estudio>
+    <anio>2016</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Simulación</genero>
+      <genero>Rol</genero>
+    </generos>
+    <precio moneda="EUR">13.99</precio>
+    <nota>8.9</nota>
+    <descripcion>Heredas la granja de tu abuelo y decides qué cultivar, con quién hablar y cuándo bajar a la mina.</descripcion>
+  </juego>
+
+  <juego id="J05" pegi="7">
+    <titulo>Celeste</titulo>
+    <estudio pais="CA">Maddy Makes Games</estudio>
+    <anio>2018</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Plataformas</genero>
+    </generos>
+    <precio moneda="EUR">19.99</precio>
+    <nota>9.1</nota>
+    <descripcion>Madeline intenta subir a la cima de una montaña a base de saltos muy precisos.</descripcion>
+  </juego>
+
+  <juego id="J06" pegi="18">
+    <titulo>God of War</titulo>
+    <estudio pais="US">Santa Monica Studio</estudio>
+    <anio>2018</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Acción</genero>
+      <genero>Aventura</genero>
+    </generos>
+    <precio moneda="EUR">19.99</precio>
+    <nota>9.4</nota>
+    <descripcion>Kratos y su hijo Atreus viajan por los reinos nórdicos para cumplir una última voluntad.</descripcion>
+  </juego>
+
+  <juego id="J07" pegi="16">
+    <titulo>Elden Ring</titulo>
+    <estudio pais="JP">FromSoftware</estudio>
+    <anio>2022</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>PS5</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Xbox Series</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Rol</genero>
+      <genero>Acción</genero>
+      <genero>Mundo abierto</genero>
+    </generos>
+    <precio moneda="EUR">59.99</precio>
+    <nota>9.6</nota>
+    <descripcion>Las Tierras Intermedias esperan a un nuevo Señor del Círculo, si sobrevive a sus jefes.</descripcion>
+  </juego>
+
+  <juego id="J08" pegi="12">
+    <titulo>Hades</titulo>
+    <estudio pais="US">Supergiant Games</estudio>
+    <anio>2020</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>PS5</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Xbox Series</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Roguelike</genero>
+      <genero>Acción</genero>
+    </generos>
+    <precio moneda="EUR">24.50</precio>
+    <nota>9.3</nota>
+    <descripcion>Zagreo intenta escapar del inframundo una y otra vez, con ayuda de los dioses del Olimpo.</descripcion>
+  </juego>
+
+  <juego id="J09" pegi="7">
+    <titulo>Minecraft</titulo>
+    <estudio pais="SE">Mojang Studios</estudio>
+    <anio>2011</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Sandbox</genero>
+      <genero>Aventura</genero>
+    </generos>
+    <precio moneda="EUR">29.99</precio>
+    <nota>8.5</nota>
+    <descripcion>Mundos hechos de bloques para construir, explorar y sobrevivir a la primera noche.</descripcion>
+  </juego>
+
+  <juego id="J10" pegi="3">
+    <titulo>Mario Kart 8 Deluxe</titulo>
+    <estudio pais="JP">Nintendo EPD</estudio>
+    <anio>2017</anio>
+    <plataformas>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Carreras</genero>
+    </generos>
+    <precio moneda="EUR">59.99</precio>
+    <nota>9.2</nota>
+    <descripcion>Carreras con caparazones, plátanos y circuitos antigravedad para jugar hasta con cuatro personas.</descripcion>
+  </juego>
+
+  <juego id="J11" pegi="12">
+    <titulo>Fortnite</titulo>
+    <estudio pais="US">Epic Games</estudio>
+    <anio>2017</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>PS5</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Xbox Series</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Shooter</genero>
+      <genero>Acción</genero>
+    </generos>
+    <precio moneda="EUR">0.00</precio>
+    <nota>7.6</nota>
+    <descripcion>Cien jugadores caen en una isla y solo uno, o un equipo, queda en pie.</descripcion>
+  </juego>
+
+  <juego id="J12" pegi="18">
+    <titulo>Red Dead Redemption 2</titulo>
+    <estudio pais="US">Rockstar Games</estudio>
+    <anio>2018</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Xbox One</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Acción</genero>
+      <genero>Mundo abierto</genero>
+    </generos>
+    <precio moneda="EUR">39.99</precio>
+    <nota>9.5</nota>
+    <descripcion>Arthur Morgan y la banda de Van der Linde huyen hacia el este en el final del Salvaje Oeste.</descripcion>
+  </juego>
+
+  <juego id="J13" pegi="3">
+    <titulo>Animal Crossing: New Horizons</titulo>
+    <estudio pais="JP">Nintendo EPD</estudio>
+    <anio>2020</anio>
+    <plataformas>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Simulación</genero>
+    </generos>
+    <precio moneda="EUR">59.99</precio>
+    <nota>8.7</nota>
+    <descripcion>Te mudas a una isla desierta y la vas convirtiendo en un pueblo a tu gusto día a día.</descripcion>
+  </juego>
+
+  <juego id="J14" pegi="12">
+    <titulo>Portal 2</titulo>
+    <estudio pais="US">Valve</estudio>
+    <anio>2011</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Puzles</genero>
+    </generos>
+    <precio moneda="EUR">9.75</precio>
+    <nota>9.5</nota>
+    <descripcion>Chell vuelve a Aperture Science para resolver pruebas con portales bajo la mirada de GLaDOS.</descripcion>
+  </juego>
+
+  <juego id="J15" pegi="3">
+    <titulo>Gris</titulo>
+    <estudio pais="ES">Nomada Studio</estudio>
+    <anio>2018</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Aventura</genero>
+      <genero>Plataformas</genero>
+    </generos>
+    <precio moneda="EUR">16.99</precio>
+    <nota>8.4</nota>
+    <descripcion>Un viaje sin palabras en el que el mundo recupera el color a medida que avanzas.</descripcion>
+  </juego>
+
+  <juego id="J16" pegi="16">
+    <titulo>Blasphemous</titulo>
+    <estudio pais="ES">The Game Kitchen</estudio>
+    <anio>2019</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+      <plataforma>PS4</plataforma>
+      <plataforma>Xbox One</plataforma>
+      <plataforma>Switch</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Metroidvania</genero>
+      <genero>Acción</genero>
+    </generos>
+    <precio moneda="EUR">24.99</precio>
+    <nota>8.0</nota>
+    <descripcion>El Penitente recorre Cvstodia, una tierra inspirada en la Semana Santa andaluza.</descripcion>
+  </juego>
+
+</catalogo>

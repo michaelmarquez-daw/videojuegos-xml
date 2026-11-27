@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de videojuegos (JSON)</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <p class="cabecera__etiqueta">XML, JSON y fetch</p>
+      <h1>Catálogo de videojuegos</h1>
+      <p class="cabecera__texto">Esta página lee datos/catalogo.json, que se genera a partir del XML con XSLT.</p>
+      <nav class="cabecera__enlaces" aria-label="Otras vistas">
+        <a href="../salida/catalogo.html">Ver el catálogo generado con XSLT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <form class="filtros" id="filtros" role="search">
+      <div class="filtros__busqueda">
+        <label for="busqueda">Buscar título o estudio</label>
+        <input type="search" id="busqueda" name="busqueda" autocomplete="off">
+      </div>
+      <div>
+        <label for="plataforma">Plataforma</label>
+        <select id="plataforma" name="plataforma">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div>
+        <label for="genero">Género</label>
+        <select id="genero" name="genero">
+          <option value="">Todos</option>
+        </select>
+      </div>
+      <div>
+        <label for="edad">Edad del jugador</label>
+        <select id="edad" name="edad">
+          <option value="">Cualquiera</option>
+          <option value="3">3 años</option>
+          <option value="7">7 años</option>
+          <option value="12">12 años</option>
+          <option value="16">16 años</option>
+          <option value="18">18 o más</option>
+        </select>
+      </div>
+      <div>
+        <label for="orden">Ordenar por</label>
+        <select id="orden" name="orden">
+          <option value="nota">Nota</option>
+          <option value="precio">Precio (de menor a mayor)</option>
+          <option value="anio">Año (más recientes)</option>
+          <option value="titulo">Título</option>
+        </select>
+      </div>
+    </form>
+
+    <p class="estado" id="estado" aria-live="polite">Cargando catálogo...</p>
+    <ul class="lista-juegos" id="lista"></ul>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Práctica de Lenguajes de marcas. Precios orientativos y notas inventadas.</p>
+    </div>
+  </footer>
+
+  <template id="plantilla-ficha">
+    <li class="ficha">
+      <span class="nota"><span class="visualmente-oculto">Nota </span><span class="nota__valor"></span></span>
+      <div>
+        <h2></h2>
+        <p class="ficha__datos"></p>
+        <p class="ficha__plataformas"></p>
+        <p class="ficha__descripcion"></p>
+      </div>
+      <div class="ficha__lado">
+        <span class="pegi"></span>
+        <span class="ficha__precio"></span>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalogo.schema.json",
+  "title": "Catálogo de videojuegos",
+  "description": "Estructura de datos/catalogo.json. Mismas reglas que catalogo.xsd salvo el título único y el número de decimales, que JSON Schema no expresa de forma sencilla.",
+  "type": "object",
+  "required": ["actualizado", "juegos"],
+  "additionalProperties": false,
+  "properties": {
+    "actualizado": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "juegos": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/juego" }
+    }
+  },
+  "$defs": {
+    "juego": {
+      "type": "object",
+      "required": ["id", "titulo", "estudio", "anio", "plataformas", "generos", "pegi", "precio", "nota"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^J[0-9]{2}$" },
+        "titulo": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "estudio": {
+          "type": "object",
+          "required": ["nombre", "pais"],
+          "additionalProperties": false,
+          "properties": {
+            "nombre": { "type": "string", "minLength": 1, "maxLength": 60 },
+            "pais": { "type": "string", "pattern": "^[A-Z]{2}$" }
+          }
+        },
+        "anio": { "type": "integer", "minimum": 1980, "maximum": 2030 },
+        "plataformas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/plataforma" }
+        },
+        "generos": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/genero" }
+        },
+        "pegi": { "enum": [3, 7, 12, 16, 18] },
+        "precio": { "type": "number", "minimum": 0, "maximum": 99.99 },
+        "nota": { "type": "number", "minimum": 0, "maximum": 10 },
+        "descripcion": { "type": "string", "maxLength": 160 }
+      }
+    },
+    "plataforma": {
+      "enum": ["PC", "PS4", "PS5", "Xbox One", "Xbox Series", "Switch"]
+    },
+    "genero": {
+      "enum": [
+        "Acción", "Aventura", "Carreras", "Metroidvania", "Mundo abierto", "Plataformas",
+        "Puzles", "Rol", "Roguelike", "Sandbox", "Shooter", "Simulación"
+      ]
+    }
+  }
+}

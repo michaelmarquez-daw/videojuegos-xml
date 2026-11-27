@@ -1,0 +1,31 @@
+<!-- DTD del catálogo. Solo comprueba la estructura; los tipos y rangos los controla el XSD. -->
+
+<!ELEMENT catalogo (juego+)>
+<!ATTLIST catalogo
+          actualizado CDATA #REQUIRED
+          xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation CDATA #IMPLIED>
+
+<!ELEMENT juego (titulo, estudio, anio, plataformas, generos, precio, nota, descripcion?)>
+<!ATTLIST juego
+          id ID #REQUIRED
+          pegi (3 | 7 | 12 | 16 | 18) #REQUIRED>
+
+<!ELEMENT titulo (#PCDATA)>
+
+<!ELEMENT estudio (#PCDATA)>
+<!ATTLIST estudio pais CDATA #REQUIRED>
+
+<!ELEMENT anio (#PCDATA)>
+
+<!ELEMENT plataformas (plataforma+)>
+<!ELEMENT plataforma (#PCDATA)>
+
+<!ELEMENT generos (genero+)>
+<!ELEMENT genero (#PCDATA)>
+
+<!ELEMENT precio (#PCDATA)>
+<!ATTLIST precio moneda CDATA #FIXED "EUR">
+
+<!ELEMENT nota (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>

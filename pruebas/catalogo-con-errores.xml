@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogo SYSTEM "../datos/catalogo.dtd">
+<!-- Pasa la DTD pero no el XSD: sirve para ver que el XSD es más estricto -->
+<catalogo actualizado="2026-11-20"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../datos/catalogo.xsd">
+
+  <juego id="J1" pegi="7">
+    <titulo>Celeste</titulo>
+    <estudio pais="can">Maddy Makes Games</estudio>
+    <anio>2018</anio>
+    <plataformas>
+      <plataforma>Dreamcast</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Plataformas</genero>
+    </generos>
+    <precio moneda="EUR">19.999</precio>
+    <nota>11</nota>
+  </juego>
+
+  <juego id="J02" pegi="3">
+    <titulo>Celeste</titulo>
+    <estudio pais="CA">Maddy Makes Games</estudio>
+    <anio>1975</anio>
+    <plataformas>
+      <plataforma>PC</plataforma>
+    </plataformas>
+    <generos>
+      <genero>Plataformas</genero>
+    </generos>
+    <precio moneda="EUR">19.99</precio>
+    <nota>9.1</nota>
+  </juego>
+
+</catalogo>
