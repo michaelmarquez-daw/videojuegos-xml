@@ -20,14 +20,13 @@
       <body>
         <header class="cabecera">
           <div class="contenedor">
-            <p class="cabecera__etiqueta">Catálogo generado con XSLT</p>
             <h1>Catálogo de videojuegos</h1>
             <p class="cabecera__texto">
-              <xsl:text>Datos de catalogo.xml, actualizado el </xsl:text>
+              <xsl:text>Generado con XSLT a partir de catalogo.xml (actualizado el </xsl:text>
               <xsl:call-template name="fecha">
                 <xsl:with-param name="iso" select="@actualizado"/>
               </xsl:call-template>
-              <xsl:text>.</xsl:text>
+              <xsl:text>).</xsl:text>
             </p>
             <nav class="cabecera__enlaces" aria-label="Otras vistas">
               <a href="../web/index.html">Ver la versión web con filtros (JSON)</a>
@@ -36,26 +35,16 @@
         </header>
 
         <main class="contenedor">
-          <section aria-label="Resumen del catálogo">
-            <dl class="resumen">
-              <div>
-                <dt>Juegos</dt>
-                <dd><xsl:value-of select="count(juego)"/></dd>
-              </div>
-              <div>
-                <dt>Nota media</dt>
-                <dd><xsl:value-of select="format-number(sum(juego/nota) div count(juego), '0,0', 'es')"/></dd>
-              </div>
-              <div>
-                <dt>Precio medio</dt>
-                <dd><xsl:value-of select="concat(format-number(sum(juego/precio) div count(juego), '#.##0,00', 'es'), '&#160;€')"/></dd>
-              </div>
-              <div>
-                <dt>Gratuitos</dt>
-                <dd><xsl:value-of select="count(juego[precio = 0])"/></dd>
-              </div>
-            </dl>
-          </section>
+          <p class="resumen">
+            <xsl:value-of select="count(juego)"/>
+            <xsl:text> juegos · nota media </xsl:text>
+            <xsl:value-of select="format-number(sum(juego/nota) div count(juego), '0,0', 'es')"/>
+            <xsl:text> · precio medio </xsl:text>
+            <xsl:value-of select="concat(format-number(sum(juego/precio) div count(juego), '#.##0,00', 'es'), '&#160;€')"/>
+            <xsl:text> · </xsl:text>
+            <xsl:value-of select="count(juego[precio = 0])"/>
+            <xsl:text> gratis</xsl:text>
+          </p>
 
           <section aria-labelledby="titulo-tabla">
             <h2 id="titulo-tabla">Ordenados por nota</h2>
@@ -159,7 +148,9 @@
       </th>
       <td data-etiqueta="Estudio">
         <xsl:value-of select="estudio"/>
-        <span class="pais"><xsl:value-of select="estudio/@pais"/></span>
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="estudio/@pais"/>
+        <xsl:text>)</xsl:text>
       </td>
       <td data-etiqueta="Año"><xsl:value-of select="anio"/></td>
       <td data-etiqueta="Plataformas">

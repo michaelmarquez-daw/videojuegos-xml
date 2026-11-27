@@ -45,7 +45,6 @@ public class Procesar {
 
     private static final Locale ESPANOL = Locale.of("es", "ES");
 
-    // El tipo le dice a XPath qué resultado esperamos: nodos, número, cadena o booleano
     record Consulta(String descripcion, String expresion, QName tipo) {}
 
     // Las mismas consultas que están explicadas en xpath/consultas-xpath.md
@@ -119,7 +118,7 @@ public class Procesar {
         try {
             documento = constructor.parse(xml.toFile());
         } catch (SAXParseException e) {
-            // Error grave: el XML no está bien formado. Ya queda anotado en la lista.
+            // ya se ha guardado en errores
         } catch (IOException e) {
             // Por ejemplo, un DOCTYPE que apunta a una DTD que no existe
             System.out.println("   No se puede leer: " + e.getMessage());
@@ -138,7 +137,7 @@ public class Procesar {
         try {
             validador.validate(new StreamSource(xml.toFile()));
         } catch (SAXParseException e) {
-            // ya anotado
+            // ya se ha guardado en errores
         } catch (IOException e) {
             System.out.println("   No se puede leer: " + e.getMessage());
             System.exit(1);
@@ -200,7 +199,7 @@ public class Procesar {
             xml.getFileName(), xsl.getFileName(), salida, Files.size(salida));
     }
 
-    /** Guarda los errores de validación para enseñarlos todos juntos y no solo el primero. */
+    // Junta todos los errores para enseñarlos de una vez
     static class ListaErrores implements ErrorHandler {
 
         private final List<String> errores = new ArrayList<>();
