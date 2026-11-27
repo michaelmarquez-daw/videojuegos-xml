@@ -26,7 +26,7 @@ async function cargarCatalogo() {
     mostrar();
   } catch (error) {
     // Lo más habitual es abrir el HTML con doble clic: fetch no funciona con file://
-    estado.textContent = 'No se ha podido cargar el catálogo. Abre la página desde un servidor local (Live Server o php -S).';
+    estado.textContent = 'No se ha podido cargar el catálogo. Si has abierto el fichero con doble clic, ábrelo desde un servidor local (Live Server o php -S).';
     console.error(error);
   }
 }
@@ -112,7 +112,7 @@ function mostrar() {
   lista.replaceChildren(...resultado.map(crearFicha));
 
   if (resultado.length === 0) {
-    estado.textContent = 'Ningún juego cumple esos filtros.';
+    estado.textContent = 'Ningún juego cumple esos filtros. Prueba a quitar alguno o pulsa «Quitar filtros».';
   } else {
     estado.textContent = `Mostrando ${resultado.length} de ${juegos.length} juegos.`;
   }
@@ -120,5 +120,8 @@ function mostrar() {
 
 formulario.addEventListener('input', mostrar);
 formulario.addEventListener('submit', evento => evento.preventDefault());
+// El evento reset salta antes de que los campos vuelvan a su valor inicial,
+// por eso mostrar() se ejecuta un momento después con setTimeout
+formulario.addEventListener('reset', () => setTimeout(mostrar));
 
 cargarCatalogo();

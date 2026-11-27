@@ -14,6 +14,7 @@
     <html lang="es">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Catálogo de videojuegos hecho en XML y validado con DTD y XSD. Esta versión la genera XSLT directamente desde el XML."/>
         <title>Catálogo de videojuegos</title>
         <link rel="stylesheet" href="../css/estilos.css"/>
       </head>
@@ -22,7 +23,7 @@
           <div class="contenedor">
             <h1>Catálogo de videojuegos</h1>
             <p class="cabecera__texto">
-              <xsl:text>Generado con XSLT a partir de catalogo.xml (actualizado el </xsl:text>
+              <xsl:text>Práctica de Lenguajes de marcas: un catálogo de videojuegos en XML que valido con DTD y XSD, consulto con XPath y transformo con XSLT en HTML y en JSON. Esta versión la genera XSLT directamente desde el XML (datos del </xsl:text>
               <xsl:call-template name="fecha">
                 <xsl:with-param name="iso" select="@actualizado"/>
               </xsl:call-template>
@@ -49,20 +50,22 @@
           <section aria-labelledby="titulo-tabla">
             <h2 id="titulo-tabla">Ordenados por nota</h2>
             <div class="tabla-envoltorio">
-              <table class="tabla">
-                <thead>
-                  <tr>
-                    <th scope="col">Nota</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Estudio</th>
-                    <th scope="col">Año</th>
-                    <th scope="col">Plataformas</th>
-                    <th scope="col">Géneros</th>
-                    <th scope="col">PEGI</th>
-                    <th scope="col" class="num">Precio</th>
+              <!-- Los role repiten lo que ya dice la tabla: en móvil el CSS la pasa a display: block
+                   y Safari deja de tratarla como tabla si no se le indica así -->
+              <table class="tabla" role="table">
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th scope="col" role="columnheader">Nota</th>
+                    <th scope="col" role="columnheader">Título</th>
+                    <th scope="col" role="columnheader">Estudio</th>
+                    <th scope="col" role="columnheader">Año</th>
+                    <th scope="col" role="columnheader">Plataformas</th>
+                    <th scope="col" role="columnheader">Géneros</th>
+                    <th scope="col" role="columnheader">PEGI</th>
+                    <th scope="col" role="columnheader" class="num">Precio</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody role="rowgroup">
                   <xsl:apply-templates select="juego">
                     <xsl:sort select="nota" data-type="number" order="descending"/>
                     <xsl:sort select="titulo"/>
@@ -122,7 +125,8 @@
 
         <footer class="pie">
           <div class="contenedor">
-            <p>Práctica de Lenguajes de marcas. Precios orientativos y notas inventadas.</p>
+            <p>Práctica de Lenguajes de marcas. Precios orientativos y notas inventadas. Las notas de 9,5 o más van en rojo.</p>
+            <p>Hecho por Michael Márquez Calvo · <a href="https://github.com/michaelmarquez-daw/videojuegos-xml">Código en GitHub</a> · <a href="https://michaelmarquez-daw.github.io/">Volver al portfolio</a></p>
           </div>
         </footer>
       </body>
@@ -130,8 +134,8 @@
   </xsl:template>
 
   <xsl:template match="juego">
-    <tr>
-      <td data-etiqueta="Nota">
+    <tr role="row">
+      <td role="cell" data-etiqueta="Nota">
         <span>
           <xsl:attribute name="class">
             <xsl:text>nota</xsl:text>
@@ -140,37 +144,37 @@
           <xsl:value-of select="format-number(nota, '0,0', 'es')"/>
         </span>
       </td>
-      <th scope="row" data-etiqueta="Título">
+      <th scope="row" role="rowheader" data-etiqueta="Título">
         <span class="tabla__titulo"><xsl:value-of select="titulo"/></span>
         <xsl:if test="descripcion">
           <span class="tabla__descripcion"><xsl:value-of select="descripcion"/></span>
         </xsl:if>
       </th>
-      <td data-etiqueta="Estudio">
+      <td role="cell" data-etiqueta="Estudio">
         <xsl:value-of select="estudio"/>
         <xsl:text> (</xsl:text>
         <xsl:value-of select="estudio/@pais"/>
         <xsl:text>)</xsl:text>
       </td>
-      <td data-etiqueta="Año"><xsl:value-of select="anio"/></td>
-      <td data-etiqueta="Plataformas">
+      <td role="cell" data-etiqueta="Año"><xsl:value-of select="anio"/></td>
+      <td role="cell" data-etiqueta="Plataformas">
         <xsl:for-each select="plataformas/plataforma">
           <xsl:value-of select="."/>
           <xsl:if test="position() != last()">, </xsl:if>
         </xsl:for-each>
       </td>
-      <td data-etiqueta="Géneros">
+      <td role="cell" data-etiqueta="Géneros">
         <xsl:for-each select="generos/genero">
           <xsl:value-of select="."/>
           <xsl:if test="position() != last()">, </xsl:if>
         </xsl:for-each>
       </td>
-      <td data-etiqueta="PEGI">
+      <td role="cell" data-etiqueta="PEGI">
         <xsl:call-template name="insignia-pegi">
           <xsl:with-param name="pegi" select="@pegi"/>
         </xsl:call-template>
       </td>
-      <td data-etiqueta="Precio" class="num">
+      <td role="cell" data-etiqueta="Precio" class="num">
         <xsl:choose>
           <xsl:when test="precio = 0">Gratis</xsl:when>
           <xsl:otherwise>

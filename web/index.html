@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo de videojuegos hecho en XML y validado con DTD y XSD. Esta versión lee el JSON generado con XSLT y filtra con JavaScript.">
   <title>Catálogo de videojuegos (JSON)</title>
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
@@ -10,7 +11,7 @@
   <header class="cabecera">
     <div class="contenedor">
       <h1>Catálogo de videojuegos</h1>
-      <p class="cabecera__texto">Esta página lee datos/catalogo.json, que se genera a partir del XML con XSLT.</p>
+      <p class="cabecera__texto">Práctica de Lenguajes de marcas: un catálogo de videojuegos en XML que valido con DTD y XSD, consulto con XPath y transformo con XSLT en HTML y en JSON. Esta versión lee ese JSON y filtra los juegos con JavaScript.</p>
       <nav class="cabecera__enlaces" aria-label="Otras vistas">
         <a href="../salida/catalogo.html">Ver el catálogo generado con XSLT</a>
       </nav>
@@ -43,27 +44,31 @@
           <option value="7">7 años</option>
           <option value="12">12 años</option>
           <option value="16">16 años</option>
-          <option value="18">18 o más</option>
         </select>
       </div>
       <div>
         <label for="orden">Ordenar por</label>
         <select id="orden" name="orden">
-          <option value="nota">Nota</option>
-          <option value="precio">Precio (de menor a mayor)</option>
-          <option value="anio">Año (más recientes)</option>
-          <option value="titulo">Título</option>
+          <option value="nota">Mejor nota</option>
+          <option value="precio">Más baratos</option>
+          <option value="anio">Más recientes</option>
+          <option value="titulo">Título, A-Z</option>
         </select>
       </div>
     </form>
 
-    <p class="estado" id="estado" aria-live="polite">Cargando catálogo...</p>
+    <div class="resultado">
+      <p class="estado" id="estado" aria-live="polite">Cargando catálogo...</p>
+      <!-- El atributo form une el botón al formulario aunque esté fuera de él -->
+      <button type="reset" form="filtros" class="boton">Quitar filtros</button>
+    </div>
     <ul class="lista-juegos" id="lista"></ul>
   </main>
 
   <footer class="pie">
     <div class="contenedor">
-      <p>Práctica de Lenguajes de marcas. Precios orientativos y notas inventadas.</p>
+      <p>Práctica de Lenguajes de marcas. Precios orientativos y notas inventadas. Las notas de 9,5 o más van en rojo.</p>
+      <p>Hecho por Michael Márquez Calvo · <a href="https://github.com/michaelmarquez-daw/videojuegos-xml">Código en GitHub</a> · <a href="https://michaelmarquez-daw.github.io/">Volver al portfolio</a></p>
     </div>
   </footer>
 

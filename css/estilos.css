@@ -25,6 +25,18 @@ body {
   line-height: 1.5;
 }
 
+/* Reparte mejor las líneas: sin una palabra sola al final del título o del párrafo */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+.tabla__descripcion {
+  text-wrap: pretty;
+}
+
 a {
   color: var(--rojo);
 }
@@ -47,6 +59,9 @@ button:focus-visible {
   position: absolute;
   width: 1px;
   height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
@@ -66,12 +81,21 @@ button:focus-visible {
 }
 
 .cabecera__texto {
+  max-width: 75ch;
   margin: 0.6rem 0 0;
   color: var(--gris);
 }
 
 .cabecera__enlaces {
-  margin-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Enlaces de 44 px de alto como mínimo para poder pulsarlos bien con el dedo */
+.cabecera__enlaces a,
+.pie a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 10px 0;
 }
 
 .cabecera__enlaces a {
@@ -89,6 +113,11 @@ h2 {
 }
 
 /* Tabla del catálogo */
+/* Si algún día no cabe, la tabla se desplaza dentro de su caja y no mueve toda la página */
+.tabla-envoltorio {
+  overflow-x: auto;
+}
+
 .tabla {
   width: 100%;
   border-collapse: collapse;
@@ -125,8 +154,9 @@ h2 {
   font-size: 0.85rem;
 }
 
-.num {
-  text-align: right !important;
+/* .tabla .num pesa más que .tabla td, así no hace falta !important */
+.tabla .num {
+  text-align: right;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -208,6 +238,10 @@ h2 {
   font-size: 0.85rem;
 }
 
+.pie p {
+  margin: 0.25rem 0;
+}
+
 /* Versión web: filtros y lista */
 .filtros {
   display: grid;
@@ -237,12 +271,43 @@ h2 {
   background: #fff;
   color: var(--tinta);
   font: inherit;
+  min-height: 44px;
+}
+
+.filtros select {
+  cursor: pointer;
+}
+
+/* Texto con el número de resultados y, a su lado, el botón para quitar los filtros */
+.resultado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin: 1.25rem 0 0.75rem;
 }
 
 .estado {
-  margin: 1.25rem 0 0.5rem;
+  margin: 0;
   color: var(--gris);
   font-weight: 600;
+}
+
+.boton {
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 2px solid var(--tinta);
+  border-radius: 0;
+  background: var(--blanco);
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: var(--papel);
 }
 
 .lista-juegos {
@@ -337,8 +402,35 @@ h2 {
     color: var(--gris);
   }
 
-  .num {
-    text-align: left !important;
+  .tabla .num {
+    text-align: left;
+  }
+
+  /* La caja de la nota ya se entiende sola y el precio lleva € o "Gratis" */
+  .tabla td[data-etiqueta="Nota"]::before,
+  .tabla td[data-etiqueta="Precio"]::before {
+    content: none;
+  }
+
+  /* Estudio y año en una línea, y PEGI y precio en otra, para que cada juego ocupe menos */
+  .tabla td[data-etiqueta="Estudio"],
+  .tabla td[data-etiqueta="Año"],
+  .tabla td[data-etiqueta="PEGI"],
+  .tabla td[data-etiqueta="Precio"] {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  /* En móvil el texto principal a 16 px y el secundario a 15 px */
+  .tabla,
+  .ficha__descripcion {
+    font-size: 1rem;
+  }
+
+  .tabla__descripcion,
+  .ficha__datos,
+  .pie {
+    font-size: 0.9375rem;
   }
 
   .ficha {
